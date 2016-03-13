@@ -1,13 +1,8 @@
 #include "spimcore.h"
 
 /* project.c
-
-   Created By: Clayton Walker and Matthew Brown
-
-   The project's coding was almost entirely done by Clayton Walker.
-   Both project partners met up and discussed the project together, going through the file as a group effort. 
-   This file is a result of a 70/30 effort collaboration, with Clayton doing 70% of the work and coding, and the other 30% from Matthew in helping understand what is going on in the program.
- */
+   Created By: Clayton Walker 
+*/
 
 /* ALU */
 /* 10 Points */
