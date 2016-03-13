@@ -1,4 +1,0 @@
-In Terminal:
-cd ProjectDirectory
-gcc -o SPIMProject spimcore.c project.c
-./SPIMProject test.asc
