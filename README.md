@@ -34,4 +34,5 @@ The test files are in .asc format, but are viewable as .txt in the Test-Files fo
 ##Example: 
 
 $ gcc -o MySpim spimcore.c project.c
+
 $ ./MySpim test.asc
