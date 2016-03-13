@@ -1,0 +1,146 @@
+// The following shows the tracing of major steps and functions executed by your
+// project program when the input file encounters the code for ADD instruction.
+
+
+First, the main() calls loop(), which calls step() if the user enters the code "s"
+at the prompt.  The step() calls the following functions in that order:
+
+int instruction_fetch(unsigned PC,unsigned *Mem,unsigned *instruction)
+{
+    
+// 1. Fetch the instruction addressed by PC from Mem and write it to instruction.
+// 2. Return 1 if a halt condition occurs; otherwise, return 0.
+  
+    *instruction = ....
+    ....
+}
+
+
+void instruction_partition(unsigned instruction, unsigned *op, unsigned *r1,unsigned *r2, unsigned *r3, unsigned *funct, unsigned *offset, unsigned *jsec)
+{
+
+// Partition instruction into several parts (op, r1, r2, r3, funct, offset, jsec)
+    *op = (instruction >> 26) & 0x0000003f; // to extract the leftmost 6 bits of instruction
+                                            // by shifting right 26 bits followed by
+                                            // extraction using a 6-bit mask consisting of 
+                                            // bit value 1 for the rightmost 6 bits
+    ...
+
+}
+
+int instruction_decode(unsigned op,struct_controls *controls)
+{
+  
+// 1. Decode the instruction using the opcode (op).
+// 2. Assign the values of the control signals to the variables in the structure 
+//    struct_ controls (See spimcore.h file)
+
+    switch(op)
+    {
+      // R-type
+      case 0x00:
+          controls->RegDst = 1;
+          controls->ALUSrc = 0;
+          controls->MemtoReg = 0;
+          controls->RegWrite = 1;
+          controls->MemWrite = 0;
+          controls->MemRead = 0;
+          controls->Branch = 0;
+          controls->ALUOp = 7;
+          controls->Jump = 0;
+          break;
+
+      ....
+
+      }
+  ...
+}
+
+void read_register(unsigned r1,unsigned r2,unsigned *Reg,unsigned *data1,unsigned *data2)
+{
+// Read the registers addressed by r1 and r2 from Reg, and write the read values to
+// data1 and data2 respectively.
+     *data1 = ...
+     *data2 = ...
+}
+
+
+void sign_extend(unsigned offset,unsigned *extended_value)
+{    
+....
+}
+
+
+int ALU_operations(unsigned data1,unsigned data2,unsigned extended_value,unsigned funct,char ALUOp,char ALUSrc,unsigned *ALUresult,char *Zero)
+{
+
+// 1. Apply ALU operations on data1, and data2 or extended_value (determined by ALUSrc).
+// 2. The operation performed is based on ALUOp and funct.
+// 3. Apply the function ALU(…).
+// 4. Output the result to ALUresult.
+// 5. Return 1 if a halt condition occurs; otherwise, return 0.
+
+    //determines the ALUOp
+    switch(ALUOp)
+    {
+
+        .....
+
+        case 7:    
+             switch(funct)
+             {
+                    case 0x20:  // ADD
+                        ALU(data1,data2,0,ALUresult,Zero);
+                        break;
+
+                   ....
+
+             }
+
+     }
+     return 0;
+}
+
+void ALU(unsigned A,unsigned B,char ALUControl,unsigned *ALUresult,char *Zero)
+{
+ 
+// 1. Implement the operations on input parameters A and B according to ALUControl.
+// 2. Output the result (Z) to ALUresult.
+// 3. Set Zero to 1 if the result is zero; otherwise, set it to 0.
+     
+     //Determines which op to perform
+     switch(ALUControl)
+     {
+
+           //Z = A + B
+           case 0:
+                // Output the result (Z) to ALUresult.
+                *ALUresult = ...
+                // Set Zero to 1 if the result is zero; otherwise, set it to 0.
+                ...
+
+     }
+}
+
+/* Read/Write Memory */
+int rw_memory(unsigned ALUresult,unsigned data2,char MemWrite,char MemRead,unsigned *memdata,unsigned *Mem)
+{
+..
+}
+
+/* Write Register */
+void write_register(unsigned r2,unsigned r3,unsigned memdata,unsigned ALUresult,char RegWrite,char RegDst,char MemtoReg,unsigned *Reg)
+{
+
+// Write the data (ALUresult or memdata) to a register (Reg) addressed by r2 or r3.
+....
+}
+
+void PC_update(unsigned jsec,unsigned extended_value,char Branch,char Jump,char Zero,unsigned *PC)
+{
+
+// Update the program counter (PC)
+
+      *PC = ...
+...
+}
