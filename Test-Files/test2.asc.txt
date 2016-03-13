@@ -6,5 +6,5 @@
 340b5000  # ori $11, $0, 20480     # 20480 (in decimal) = 0x5000 
 ad690000  # sw $9, 0($11)          # store word at memory offset 20480 
 8d6c0003  # lw $12, 3($11)         # load word 
-0803fffc  j 0x00ffff0 # jump to address 1048560 (decimal), or 0xFFFF0 
+0803fffc  j 0x00ffff0              # jump to address 1048560 (decimal), or 0xFFFF0 
 03e00008  jr $31                   # illegal instruction 
