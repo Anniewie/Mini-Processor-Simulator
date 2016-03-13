@@ -19,7 +19,7 @@ Copy the project using `git clone  https://github.com/cwalk/Mini-Processor-Simul
 
 Then cd into the project folder `cd Mini-Processor-Simulator/`
 
-Navigate to the directory containing the source code `cd Project/`
+Navigate to the directory containing the source code `cd src/`
 
 Run the following command to compile:
 
