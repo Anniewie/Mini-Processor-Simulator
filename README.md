@@ -1,7 +1,3 @@
-## YouTube
-
-YouTube:
-
 ## Introduction
 
 This project simulates the execution of a subset of a 32-bit five-stage CPU Pipeline
@@ -40,3 +36,7 @@ The test files are in .asc format, but are viewable as .txt in the Test-Files fo
 $ gcc -o MySpim spimcore.c project.c
 
 $ ./MySpim test.asc
+
+## YouTube
+
+YouTube:
