@@ -37,6 +37,10 @@ $ gcc -o MySpim spimcore.c project.c
 
 $ ./MySpim test.asc
 
+## MIPs Help
+
+Visit: http://logos.cs.uic.edu/366/notes/mips%20quick%20tutorial.htm
+
 ## YouTube
 
-YouTube:
+YouTube: https://www.youtube.com/watch?v=tgiGLYAfYRo
